@@ -1,6 +1,6 @@
 # **COFFEE BAR**
 
-An aesthetic blog website for coffe lover. You can explore recipes for pouplar coffee.
+An aesthetic blog website for coffee lover. You can explore recipes for popular coffee.
 
 ## **RECIPES**
 
