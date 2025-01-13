@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&family=Playwrite+AU+SA:wght@100..400&display=swap");
+    </style>
+    <link href="./styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" />
+  </head>
+  <body
+    class="gardient-coffee-section min-h-screen font-josefin text-espresso flex justify-center"
+  >
+    <div
+      class="gardient-recipe-section h-max recipe my-32 px-10 py-10 bg-cream rounded-3xl w-[50%] relative border-4 border-espresso shadow-lg"
+    ></div>
+
+    <script>
+      const queryString = window.location.search; // Get the query string (?id=123)
+      const urlParams = new URLSearchParams(queryString); // Parse it
+
+      // Get the value of the 'id' parameter
+      const currentId = urlParams.get("id");
+
+      const card = document.querySelector(".recipe");
+      let mainHTML = "";
+
+      fetch("../src/data.json")
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((coffee) => {
+            if (coffee.id === currentId) {
+              //    creating ingredients html with loop
+              let { ingredients } = coffee;
+              let igdHTML = "";
+              for (const key in ingredients) {
+                if (Object.prototype.hasOwnProperty.call(ingredients, key)) {
+                  const element = ingredients[key];
+
+                  let igdhtml = ` <li class="text-xl ml-2 mt-2">${key} : ${element}</li>`;
+
+                  igdHTML += igdhtml;
+                }
+              }
+
+              //    creating recipe
+              let html = `
+                        <div class="header w-full">
+                            <div class="text-6xl font-semibold">${coffee.name}</div>
+                            <img
+                            src="../images/${coffee.image}"
+                            alt="#"
+                            class="absolute -top-24 right-12 w-96"
+                            />
+                        </div>
+                        <div class="info mt-9 p-4 rounded-lg bg-caramel shadow-md">
+                            <div class="taste">
+                            <div class="text-2xl font-semibold">Taste :${coffee.taste}</div>
+                            </div>
+                            <div class="ingredients mt-4">
+                            <ul class="text-2xl font-semibold">
+                                Ingredients
+                                ${igdHTML}
+                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 p-4 rounded-lg bg-caramel shadow-md">
+                            <div class="text-2xl font-semibold">Step By Step Guide</div>
+                            <div class="steps mt-8 ml-4">
+                            </div>
+                        </div>
+      `;
+              mainHTML += html;
+              card.innerHTML = mainHTML;
+
+              //    creaing steps html with loop
+              let stepsDiv = document.querySelector(".steps");
+              let steps = coffee.steps;
+
+              let stepsHTML = "";
+              let svg = ` <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              >
+                              <path
+                                  fill="currentColor"
+                                  d="M6 18a6.06 6.06 0 0 0 5.17-6a7.62 7.62 0 0 1 6.52-7.51l2.59-.37c-.07-.08-.13-.16-.21-.24c-3.26-3.26-9.52-2.28-14 2.18C2.28 9.9 1 15 2.76 18.46z"
+                              />
+                              <path
+                                  fill="currentColor"
+                                  d="M12.73 12a7.63 7.63 0 0 1-6.51 7.52l-2.46.35l.15.17c3.26 3.26 9.52 2.29 14-2.17C21.68 14.11 23 9 21.25 5.59l-3.34.48A6.05 6.05 0 0 0 12.73 12"
+                              />
+                            </svg>`;
+              for (const step of steps) {
+                let stephtml = ` <div class="flex gap-2">
+                                     ${svg}
+                                      <div class="text-lg">${step}</div>
+                              </div> <br />`;
+
+                stepsHTML += stephtml;
+              }
+              stepsDiv.innerHTML = stepsHTML;
+            }
+          });
+        });
+    </script>
+  </body>
+</html>
