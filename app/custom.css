@@ -100,7 +100,6 @@ img {
   left: 0;
   transform: translateX(0);
   border-radius: 0;
-  border: 0 0 4px 0;
   z-index: 100;
   transition: width 0.7s ease-in-out, border 1s ease-in-out,
     border-radius 1s ease-in-out, left 1s ease-in-out, transform 1s ease-in-out,
@@ -120,7 +119,7 @@ img {
 }
 
 .scroll-down .translate-wrapper nav {
-  width: 80%;
+  width: 90%;
   left: 50%;
   border: 4px solid #3b2f2f;
   border-radius: 20px;
@@ -131,7 +130,7 @@ img {
 }
 
 .scroll-up .translate-wrapper nav {
-  width: 80%;
+  width: 90%;
   left: 50%;
   border: 4px solid #3b2f2f;
   border-radius: 20px;

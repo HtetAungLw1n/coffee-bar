@@ -14,29 +14,34 @@
     <!-- navbar-section start -->
     <div class="translate-wrapper fixed w-full h-max">
       <nav
-        class="fixed w-full h-max bg-caramel py-3 px-5 flex justify-between items-center border-b-4 border-espresso"
+        class="fixed w-full h-max bg-caramel py-3 px-5 flex justify-between items-center border-b-2 lg:border-b-4 border-espresso"
       >
-        <div class="font-bold text-2xl">COFFEE BAR</div>
-        <ul class="flex gap-5 font-josefin font-bold text-lg">
-          <li class="text-xl"><a href="#home-page">Home</a></li>
-          <li class="text-xl"><a href="about.html">About</a></li>
-          <li class="text-xl"><a href="#footer">Contact</a></li>
+        <div class="font-bold text-sm lg:text-2xl">COFFEE BAR</div>
+        <ul
+          class="flex gap-2 lg:gap-5 font-josefin font-bold text-sm lg:text-xl"
+        >
+          <li><a href="#home-page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#footer">Contact</a></li>
         </ul>
       </nav>
     </div>
     <!-- navbar-section end -->
+
     <!-- main section start -->
     <section
-      class="gardient-hero-section w-full h-max pt-60 pb-36 flex flex-col justify-center items-center"
+      class="gardient-hero-section w-full h-max pt-20 pb-10 lg:pt-60 lg:pb-36 flex flex-col justify-center items-center"
       id="home-page"
     >
       <!-- main text  -->
       <div class="main-text text-center">
-        <div class="text-2xl font-semibold">LET's MAKE</div>
-        <div class="text-7xl font-playwrite font-bold py-5 pb-11">
+        <div class="text-lg lg:text-2xl font-semibold">LET's MAKE</div>
+        <div
+          class="text-4xl lg:text-7xl font-playwrite font-bold py-3 pb-6 lg:py-5 lg:pb-11"
+        >
           <span class="typewritter"></span><span class="cursor">|</span>
         </div>
-        <div class="text-2xl font-semibold">TOGETHER</div>
+        <div class="text-lg lg:text-2xl font-semibold">TOGETHER</div>
       </div>
       <!-- main text  -->
     </section>
@@ -45,21 +50,26 @@
     <section class="gardient-coffee-section" id="coffee-section">
       <!-- coffee-section start  -->
       <section class="w-full">
-        <div class="text-3xl text-center pt-10 text-espresso">
+        <div
+          class="text-xl lg:text-3xl text-center pt-5 lg:pt-10 text-espresso"
+        >
           What coffee would you like to drink today
         </div>
         <div
           id="coffee-grid-section"
-          class="px-48 py-14 grid grid-cols-4 gap-8 gap-y-14"
+          class="px-4 py-8 lg:px-48 lg-py-14 grid gap-8 gap-y-8 md:gap-y-14 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
         ></div>
       </section>
       <!-- coffee-section end  -->
+
       <!-- footer section start  -->
       <section class="footer w-full h-max pb-10 overflow-hidden" id="footer">
-        <hr class="border-t-2 border-espresso w-[80%] mx-auto" />
-        <div class="flex gap-14 py-10 px-48">
+        <hr class="border-t-2 border-espresso w-[90%] lg:w-[80%] mx-auto" />
+        <div
+          class="px-8 py-4 flex flex-col gap-y-8 lg:flex lg:flex-row lg:gap-14 lg:py-10 lg:px-48"
+        >
           <!-- child div -->
-          <div class="w-[50%]">
+          <div class="w-full lg:w-[50%]">
             "Coffee is more than just a drink—it is a moment of calm in the
             chaos, a spark of energy in the morning. Every cup tells a story,
             from the hands that harvested the beans to the skillful brewing that
@@ -67,7 +77,7 @@
             or savored during moments of inspiration, coffee has a way of
             turning the ordinary into something extraordinary."
           </div>
-          <div class="w-[23%]" id="contact-information">
+          <div class="w-full lg:w-[23%]" id="contact-information">
             <div class="text-xl font-bold">COFFEE BAR</div>
             <div class="flex gap-2">
               <svg
@@ -112,7 +122,7 @@
               <div>Business Hour: 9am to 5pm</div>
             </div>
           </div>
-          <div class="w-[23%]" id="link">
+          <div class="hidden lg:block lg:w-[23%]" id="link">
             <a href="#home-page" class="hover:text-cream transition">
               <div>Home</div>
             </a>
@@ -126,7 +136,7 @@
         </div>
         <!-- child div -->
         <div
-          class="text-6xl font-playwrite font-bold text-center tracking-wide"
+          class="text-xl lg:text-6xl pt-4 lg:pt-0 font-playwrite font-bold text-center tracking-wide"
         >
           A day without coffee is like... just kidding, I have no idea.
         </div>

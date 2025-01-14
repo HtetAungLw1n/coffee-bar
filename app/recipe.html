@@ -14,7 +14,7 @@
     class="gardient-coffee-section min-h-screen font-josefin text-espresso flex justify-center"
   >
     <div
-      class="gardient-recipe-section h-max recipe my-32 px-10 py-10 bg-cream rounded-3xl w-[50%] relative border-4 border-espresso shadow-lg"
+      class="gardient-recipe-section h-max recipe my-10 lg:my-32 px-10 py-10 bg-cream rounded-3xl w-[90%] lg:w-[50%] relative border-4 border-espresso shadow-lg"
     ></div>
 
     <script>
@@ -39,7 +39,7 @@
                 if (Object.prototype.hasOwnProperty.call(ingredients, key)) {
                   const element = ingredients[key];
 
-                  let igdhtml = ` <li class="text-xl ml-2 mt-2">${key} : ${element}</li>`;
+                  let igdhtml = ` <li class="text-lg lg:text-xl ml-2 mt-2">${key} : ${element}</li>`;
 
                   igdHTML += igdhtml;
                 }
@@ -48,19 +48,19 @@
               //    creating recipe
               let html = `
                         <div class="header w-full">
-                            <div class="text-6xl font-semibold">${coffee.name}</div>
+                            <div class="text-3xl lg:text-6xl font-semibold">${coffee.name}</div>
                             <img
                             src="../images/${coffee.image}"
                             alt="#"
-                            class="absolute -top-24 right-12 w-96"
+                            class="absolute w-[50%] -top-12 right-0 lg:-top-24 lg:right-12 lg:w-96"
                             />
                         </div>
                         <div class="info mt-9 p-4 rounded-lg bg-caramel shadow-md">
                             <div class="taste">
-                            <div class="text-2xl font-semibold">Taste :${coffee.taste}</div>
+                            <div class="text-xl lg:text-2xl font-semibold">Taste :${coffee.taste}</div>
                             </div>
                             <div class="ingredients mt-4">
-                            <ul class="text-2xl font-semibold">
+                            <ul class="text-xl lg:text-2xl font-semibold">
                                 Ingredients
                                 ${igdHTML}
                             </ul>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="mt-10 p-4 rounded-lg bg-caramel shadow-md">
-                            <div class="text-2xl font-semibold">Step By Step Guide</div>
+                            <div class="text-xl lg:text-2xl font-semibold">Step By Step Guide</div>
                             <div class="steps mt-8 ml-4">
                             </div>
                         </div>

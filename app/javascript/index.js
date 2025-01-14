@@ -5,7 +5,7 @@ fetch("../src/data.json")
   .then((data) => {
     data.forEach((coffee) => {
       let html = `
-        <a href="recipe.html?id=${coffee.id}">
+        <a href="recipe.html?id=${coffee.id}" class="sm:min-w-80">
             <div class="bg-caramel card rounded-2xl w-full h-max overflow-hidden relative  hover:shadow-brown hover:shadow-2xl flex flex-col justify-center border-4 border-espresso">
                 <img
                 src="../images/${coffee.image}"
