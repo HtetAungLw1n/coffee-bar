@@ -1,6 +1,6 @@
 const coffeeGridSection = document.querySelector("#coffee-grid-section");
 let mainHTML = "";
-fetch("../src/data.json")
+fetch("../../src/data.json")
   .then((res) => res.json())
   .then((data) => {
     data.forEach((coffee) => {

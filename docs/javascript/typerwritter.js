@@ -1,6 +1,6 @@
 let nameOfCoffee = [];
 
-fetch("../src/data.json")
+fetch("../../src/data.json")
   .then((res) => res.json())
   .then((data) => {
     data.forEach((coffee) => {
