@@ -1,8 +1,13 @@
 const coffeeGridSection = document.querySelector("#coffee-grid-section");
 let mainHTML = "";
-fetch("../../src/data.json")
-  .then((res) => res.json())
-  .then((data) => {
+
+async function coffeeSection() {
+  try {
+    const response = await fetch("../../src/data.json");
+    const data = await response.json();
+
+    console.log(data);
+
     data.forEach((coffee) => {
       let html = `
         <a href="recipe.html?id=${coffee.id}" class="sm:min-w-80">
@@ -36,4 +41,9 @@ fetch("../../src/data.json")
       mainHTML += html;
     });
     coffeeGridSection.innerHTML = mainHTML;
-  });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+coffeeSection();
