@@ -6,8 +6,6 @@ async function coffeeSection() {
     const response = await fetch("../../src/data.json");
     const data = await response.json();
 
-    console.log(data);
-
     data.forEach((coffee) => {
       let html = `
         <a href="recipe.html?id=${coffee.id}" class="sm:min-w-80">

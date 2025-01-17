@@ -1,8 +1,10 @@
 let nameOfCoffee = [];
 
-fetch("../../src/data.json")
-  .then((res) => res.json())
-  .then((data) => {
+async function coffeeName() {
+  try {
+    const response = await fetch("../../src/data.json");
+    const data = await response.json();
+
     data.forEach((coffee) => {
       let name = coffee.name;
       nameOfCoffee = [...nameOfCoffee, name];
@@ -33,7 +35,12 @@ fetch("../../src/data.json")
 
       mainTimeline.add(textTimeline);
     });
-  });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+coffeeName();
 
 //bliking Cursor
 let curosrTimeline = gsap.timeline({
