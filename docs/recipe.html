@@ -27,9 +27,11 @@
       const card = document.querySelector(".recipe");
       let mainHTML = "";
 
-      fetch("../src/data.json")
-        .then((res) => res.json())
-        .then((data) => {
+      async function recipe() {
+        try {
+          const response = await fetch("../../src/data.json");
+          const data = await response.json();
+
           data.forEach((coffee) => {
             if (coffee.id === currentId) {
               //    creating ingredients html with loop
@@ -107,7 +109,11 @@
               stepsDiv.innerHTML = stepsHTML;
             }
           });
-        });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+      recipe();
     </script>
   </body>
 </html>
