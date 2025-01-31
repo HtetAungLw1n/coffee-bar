@@ -2,6 +2,8 @@
 
 An aesthetic blog website for coffee lover. You can explore recipes for popular coffee.
 
+![Alt text](images/coffee-bar.png)
+
 ## **RECIPES**
 
 - Espresso
