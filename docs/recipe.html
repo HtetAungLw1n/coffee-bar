@@ -27,28 +27,175 @@
       const card = document.querySelector(".recipe");
       let mainHTML = "";
 
-      async function recipe() {
-        try {
-          const response = await fetch("../../src/data.json");
-          const data = await response.json();
+      const data = [
+        {
+          id: "1",
+          name: "Espresso",
+          ingredients: {
+            water: "30ml",
+            coffee: "18g",
+          },
+          taste: "Strong and rich",
+          steps: [
+            "Measure 18g of coffee beans and grind them to a fine consistency, similar to table salt.",
+            "Place the ground coffee into the portafilter and level it out evenly.",
+            "Use a tamper to firmly compress the coffee grounds, ensuring an even surface.",
+            "Attach the portafilter to the espresso machine and secure it tightly.",
+            "Start the espresso machine and extract a shot of espresso using 30ml of water. This should take around 25-30 seconds.",
+            "Pour the espresso shot into a pre-warmed cup and serve immediately to preserve its crema and flavor.",
+          ],
+          image: "espresso.png",
+        },
+        {
+          id: "2",
+          name: "Cappuccino",
+          ingredients: {
+            espresso: "30ml",
+            steamedMilk: "60ml",
+            foam: "60ml",
+          },
+          taste: "Creamy and balanced",
+          steps: [
+            "Prepare a shot of espresso by following the steps for making an espresso (30ml).",
+            "Pour cold milk into a pitcher, filling it about halfway to allow space for frothing.",
+            "Steam the milk using a steam wand, keeping the tip just below the surface to create foam.",
+            "Once the milk has doubled in volume and is smooth and creamy, turn off the steam wand.",
+            "Pour 60ml of steamed milk into the espresso, holding back the foam with a spoon.",
+            "Top the drink with 60ml of milk foam by spooning it gently on top.",
+            "Serve warm in a pre-warmed cup.",
+          ],
+          image: "cappuccino.png",
+        },
+        {
+          id: "3",
+          name: "Latte",
+          ingredients: {
+            espresso: "30ml",
+            steamedMilk: "150ml",
+            foam: "30ml",
+          },
+          taste: "Smooth and milky",
+          steps: [
+            "Prepare a shot of espresso by following the steps for making an espresso (30ml).",
+            "Pour cold milk into a pitcher, filling it about halfway for steaming.",
+            "Steam the milk with a steam wand, submerging the wand tip slightly below the surface for smooth, creamy milk.",
+            "Continue steaming until the milk reaches around 60–65°C (140–150°F) and forms a slight layer of foam.",
+            "Slowly pour the steamed milk (150ml) into the espresso, tilting the cup to mix them evenly.",
+            "Spoon 30ml of milk foam onto the top for a smooth finish.",
+            "Serve warm in a latte cup.",
+          ],
+          image: "latte.png",
+        },
+        {
+          id: "4",
+          name: "Americano",
+          ingredients: {
+            espresso: "30ml",
+            hotWater: "90ml",
+          },
+          taste: "Light and mellow",
+          steps: [
+            "Prepare a shot of espresso by following the steps for making an espresso (30ml).",
+            "Heat 90ml of water in a kettle or microwave until it’s hot but not boiling (around 80–90°C).",
+            "Pour the hot water into the cup containing the espresso shot, mixing them gently.",
+            "Adjust the ratio of water to espresso according to your taste preference.",
+            "Serve immediately in a large cup.",
+          ],
+          image: "americano.png",
+        },
+        {
+          id: "5",
+          name: "Mocha",
+          ingredients: {
+            espresso: "30ml",
+            steamedMilk: "120ml",
+            chocolateSyrup: "20ml",
+            whippedCream: "optional",
+          },
+          taste: "Sweet and chocolaty",
+          steps: [
+            "Prepare a shot of espresso by following the steps for making an espresso (30ml).",
+            "Pour 120ml of cold milk into a pitcher and steam it with a steam wand until smooth and slightly frothy.",
+            "Mix the espresso shot with 20ml of chocolate syrup in a cup until fully blended.",
+            "Pour the steamed milk into the espresso and chocolate mixture, stirring gently.",
+            "Optional: Top with whipped cream for extra richness.",
+            "Serve warm in a tall glass or mug.",
+          ],
+          image: "mocha.png",
+        },
+        {
+          id: "6",
+          name: "Macchiato",
+          ingredients: {
+            espresso: "30ml",
+            foam: "15ml",
+          },
+          taste: "Strong with a hint of creaminess",
+          steps: [
+            "Prepare a shot of espresso by following the steps for making an espresso (30ml).",
+            "Use a steam wand to froth a small amount of milk until it forms dense foam.",
+            "Spoon 15ml of the milk foam onto the top of the espresso shot.",
+            "Serve immediately in a small cup to enjoy the concentrated flavor.",
+          ],
+          image: "macchiato.png",
+        },
+        {
+          id: "7",
+          name: "Flat White",
+          ingredients: {
+            espresso: "30ml",
+            steamedMilk: "90ml",
+          },
+          taste: "Velvety and rich",
+          steps: [
+            "Prepare a shot of espresso by following the steps for making an espresso (30ml).",
+            "Pour 90ml of cold milk into a pitcher and steam it until it is smooth and velvety, avoiding too much foam.",
+            "Tilt the cup slightly and pour the steamed milk over the espresso in a thin, steady stream.",
+            "Ensure the milk and espresso blend smoothly for a rich, velvety texture.",
+            "Serve warm in a ceramic cup.",
+          ],
+          image: "flat-white.png",
+        },
+        {
+          id: "8",
+          name: "Irish Coffee",
+          ingredients: {
+            hotCoffee: "120ml",
+            irishWhiskey: "30ml",
+            brownSugar: "1 tsp",
+            whippedCream: "topping",
+          },
+          taste: "Sweet and boozy",
+          steps: [
+            "Brew 120ml of hot coffee using your preferred brewing method (e.g., drip, French press, or pour-over).",
+            "Pour 30ml of Irish whiskey into a heatproof glass or mug.",
+            "Add 1 tsp of brown sugar to the whiskey and stir until the sugar is completely dissolved.",
+            "Gently pour the hot coffee into the glass, mixing it with the whiskey and sugar.",
+            "Top the drink with a generous dollop of whipped cream, floating it on the surface without mixing.",
+            "Serve warm and enjoy responsibly.",
+          ],
+          image: "irish-coffee.png",
+        },
+      ];
 
-          data.forEach((coffee) => {
-            if (coffee.id === currentId) {
-              //    creating ingredients html with loop
-              let { ingredients } = coffee;
-              let igdHTML = "";
-              for (const key in ingredients) {
-                if (Object.prototype.hasOwnProperty.call(ingredients, key)) {
-                  const element = ingredients[key];
+      function recipe() {
+        data.forEach((coffee) => {
+          if (coffee.id === currentId) {
+            //    creating ingredients html with loop
+            let { ingredients } = coffee;
+            let igdHTML = "";
+            for (const key in ingredients) {
+              if (Object.prototype.hasOwnProperty.call(ingredients, key)) {
+                const element = ingredients[key];
 
-                  let igdhtml = ` <li class="text-lg lg:text-xl ml-2 mt-2">${key} : ${element}</li>`;
+                let igdhtml = ` <li class="text-lg lg:text-xl ml-2 mt-2">${key} : ${element}</li>`;
 
-                  igdHTML += igdhtml;
-                }
+                igdHTML += igdhtml;
               }
+            }
 
-              //    creating recipe
-              let html = `
+            //    creating recipe
+            let html = `
                         <div class="header w-full">
                             <div class="text-3xl lg:text-6xl font-semibold">${coffee.name}</div>
                             <img
@@ -75,15 +222,15 @@
                             </div>
                         </div>
       `;
-              mainHTML += html;
-              card.innerHTML = mainHTML;
+            mainHTML += html;
+            card.innerHTML = mainHTML;
 
-              //    creaing steps html with loop
-              let stepsDiv = document.querySelector(".steps");
-              let steps = coffee.steps;
+            //    creaing steps html with loop
+            let stepsDiv = document.querySelector(".steps");
+            let steps = coffee.steps;
 
-              let stepsHTML = "";
-              let svg = ` <svg
+            let stepsHTML = "";
+            let svg = ` <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="20"
                               height="20"
@@ -98,21 +245,19 @@
                                   d="M12.73 12a7.63 7.63 0 0 1-6.51 7.52l-2.46.35l.15.17c3.26 3.26 9.52 2.29 14-2.17C21.68 14.11 23 9 21.25 5.59l-3.34.48A6.05 6.05 0 0 0 12.73 12"
                               />
                             </svg>`;
-              for (const step of steps) {
-                let stephtml = ` <div class="flex gap-2">
+            for (const step of steps) {
+              let stephtml = ` <div class="flex gap-2">
                                      ${svg}
                                       <div class="text-lg">${step}</div>
                               </div> <br />`;
 
-                stepsHTML += stephtml;
-              }
-              stepsDiv.innerHTML = stepsHTML;
+              stepsHTML += stephtml;
             }
-          });
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+            stepsDiv.innerHTML = stepsHTML;
+          }
+        });
       }
+
       recipe();
     </script>
   </body>
